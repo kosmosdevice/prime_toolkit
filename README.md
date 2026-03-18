@@ -26,7 +26,7 @@ The -lm flag links the math library (required for log() and sqrt()).
 ./prime_toolkit
 ```
 Then select from the menu:
-Prime Number Toolkit
+### Prime Number Toolkit
 ====================
 1. Find all primes up to n
 2. Test if n is prime
