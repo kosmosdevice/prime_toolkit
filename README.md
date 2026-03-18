@@ -11,7 +11,7 @@ finding primes, factorization, gap analysis, and merit calculations.
     - Prime Factorization: Decompose a number into its prime factors
     - Gap Analysis: Calculate differences between consecutive primes
     - Merit Calculation: Compute gap merit values gn / ln(pn) for primes pn
-    and subsequent gap up to n
+    and subsequent gap gn up to n
 
 ## Building
 
