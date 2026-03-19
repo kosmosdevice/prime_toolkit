@@ -45,6 +45,8 @@ valgrind --leak-check=full ./a.out
 
 ## Algorithm Notes
 
+### Time Complexity
+
     - Sieve of Eratosthenes: O(n log log n)
     - Trial division: O(√n)
     - Factorization: O(√n)
