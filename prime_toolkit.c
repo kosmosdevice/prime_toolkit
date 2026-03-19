@@ -14,6 +14,16 @@ typedef struct {
 	int size;
 } double_list;
 
+typedef struct {
+	int first;
+	int second;
+} int_tuple;
+
+typedef struct {
+	int_tuple *data;
+	int size;
+} int_tuple_list;
+
 bool test_prime(int n) {
 	for (int i = 2; i <= floor(sqrt(n)); i++) {
 		if (n % i == 0)
@@ -36,18 +46,7 @@ int_list primes_up_to(int n) {
 		}
 	}
 
-	int count = 0;
-	printf("The prime numbers up to %d are:\n", n);
-	for (int p = 2; p <= n; p++) {
-		if (prime[p]) {
-			++count;
-			printf("%d ", p);
-		}
-	}
-	printf("\n");
-	printf("There are %d primes up to %d\n", count, n);
-
-	result.data = malloc(count * sizeof(int));
+	result.data = malloc(n * sizeof(int));
 	result.size = 0;
 
 	for (int i = 2; i <= n; i++) {
@@ -104,7 +103,19 @@ double_list prime_gap_merits(int_list primes, int_list gaps) {
 	return merits;
 }
 
-void twin_primes(int n) { ; }
+int_tuple_list twin_primes(int_list primes) {
+	int_tuple_list twins = {0};
+	twins.data = malloc((primes.size) * sizeof(int_tuple));
+	twins.size = 0;
+	for (int i = 1; i < primes.size; i++) {
+		if (primes.data[i] - primes.data[i - 1] == 2) {
+			int_tuple pair = {.first = primes.data[i - 1],
+			                  .second = primes.data[i]};
+			twins.data[twins.size++] = pair;
+		}
+	}
+	return twins;
+}
 
 int main(int argc, char **argv) {
 	int choice;
@@ -117,10 +128,11 @@ int main(int argc, char **argv) {
 	printf("3. Find prime factors of n\n");
 	printf("4. Find prime gaps of primes up to n\n");
 	printf("5. Find prime gap merits of primes up to n\n");
-	printf("6. Exit\n");
+	printf("6. Find twin primes in primes up to n\n");
+	printf("7. Exit\n");
 
 	while (1) {
-		printf("\nEnter your choice (1-6): ");
+		printf("\nEnter your choice (1-7): ");
 		scanf("%d", &choice);
 
 		switch (choice) {
@@ -128,6 +140,12 @@ int main(int argc, char **argv) {
 			printf("Enter a number: ");
 			scanf("%d", &n);
 			int_list primes = primes_up_to(n);
+			printf("The prime numbers up to %d are:\n", n);
+			for (int i = 0; i < primes.size; i++) {
+				printf("%d ", primes.data[i]);
+			}
+			printf("\n");
+			printf("There are %d primes up to %d\n", primes.size, n);
 			free(primes.data);
 			break;
 		}
@@ -187,7 +205,23 @@ int main(int argc, char **argv) {
 			break;
 		}
 
-		case 6:
+		case 6: {
+			printf("Enter a number: ");
+			scanf("%d", &n);
+			int_list primes = primes_up_to(n);
+			int_tuple_list twins = twin_primes(primes);
+			printf("Prime twins up to %d are:\n", n);
+			for (int i = 0; i < twins.size; i++) {
+				int_tuple pair = twins.data[i];
+				printf("%d and %d\n", pair.first, pair.second);
+			}
+			printf("\n");
+			free(primes.data);
+			free(twins.data);
+			break;
+		}
+
+		case 7:
 			return 0;
 
 		default:

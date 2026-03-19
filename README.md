@@ -16,7 +16,7 @@ finding primes, factorization, gap analysis, and merit calculations.
 ## Building
 
 ```bash
-gcc prime_toolkit.c -lm -o prime_toolkit
+gcc prime_toolkit.c -lm
 ```
 The -lm flag links the math library (required for log() and sqrt()).
 
@@ -40,7 +40,7 @@ Then select from the menu:
 Test for memory leaks with Valgrind:
 
 ```bash
-valgrind --leak-check=full ./prime_toolkit
+valgrind --leak-check=full ./a.out
 ```
 
 ## Algorithm Notes
