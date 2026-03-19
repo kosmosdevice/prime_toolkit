@@ -23,7 +23,7 @@ The -lm flag links the math library (required for log() and sqrt()).
 ## Usage
 
 ```bash
-./prime_toolkit
+./a.out
 ```
 Then select from the menu:
 ### Prime Number Toolkit
