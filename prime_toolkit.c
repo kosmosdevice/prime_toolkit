@@ -35,8 +35,8 @@ bool test_prime(int n) {
 int_list primes_up_to(int n) {
 	int_list result = {0};
 
-	bool prime[n];
-	memset(prime, true, sizeof(prime));
+    bool *prime = malloc(n * sizeof(bool));
+    memset(prime, true, n * sizeof(bool));
 
 	for (int p = 2; p * p <= n; p++) {
 		if (prime[p] == true) {
@@ -54,6 +54,7 @@ int_list primes_up_to(int n) {
 			result.data[result.size++] = i;
 		}
 	}
+    free(prime);
 	return result;
 }
 
@@ -149,7 +150,6 @@ int main(int argc, char **argv) {
 			free(primes.data);
 			break;
 		}
-
 		case 2: {
 			printf("Enter a number: ");
 			scanf("%d", &n);
@@ -159,7 +159,6 @@ int main(int argc, char **argv) {
 				printf("%d is not prime\n", n);
 			break;
 		}
-
 		case 3: {
 			printf("Enter a number: ");
 			scanf("%d", &n);
@@ -172,7 +171,6 @@ int main(int argc, char **argv) {
 			free(factors.data);
 			break;
 		}
-
 		case 4: {
 			printf("Enter a number: ");
 			scanf("%d", &n);
@@ -187,7 +185,6 @@ int main(int argc, char **argv) {
 			free(gaps.data);
 			break;
 		}
-
 		case 5: {
 			printf("Enter a number: ");
 			scanf("%d", &n);
@@ -204,7 +201,6 @@ int main(int argc, char **argv) {
 			free(merits.data);
 			break;
 		}
-
 		case 6: {
 			printf("Enter a number: ");
 			scanf("%d", &n);
@@ -220,10 +216,8 @@ int main(int argc, char **argv) {
 			free(twins.data);
 			break;
 		}
-
 		case 7:
 			return 0;
-
 		default:
 			printf("Invalid choice\n");
 		}
