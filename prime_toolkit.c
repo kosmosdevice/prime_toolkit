@@ -172,22 +172,22 @@ bool is_palindrome(int num) {
 }
 
 int prime_palindrome(int n) {
-    if (n <= 11) {
-        while (1) {
-            if (is_palindrome(n) && test_prime(n))
-                return n;
-            n++;
-        }
-    }
+	if (n <= 11) {
+		while (1) {
+			if (is_palindrome(n) && test_prime(n))
+				return n;
+			n++;
+		}
+	}
 	while (1) {
 		if (is_palindrome(n) && test_prime(n))
 			return n;
 		else
 			n++;
-        int digits = (int)log10(n) + 1;
-        if (digits % 2 == 0) {
-            n = (int)pow(10, digits);
-        }
+		int digits = (int)log10(n) + 1;
+		if (digits % 2 == 0) {
+			n = (int)pow(10, digits);
+		}
 	}
 }
 
