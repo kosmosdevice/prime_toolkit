@@ -17,6 +17,8 @@ finding primes, factorization, gap analysis, and merit calculations.
     Sieve of Atkin
     - Palindromic Primes: Generate all paliedromic prime numbers greater than
     or equal to a given limit
+    - Prime Permutations: Find the number of permutations of 1 to n so that 
+    prime numbers are at prime indices
 
 ## Building
 
@@ -41,7 +43,8 @@ Then select from the menu:
 6. Find twin primes in primes up to n
 7. Find all primes up to n with sieve of Atkin
 8. Find all palindromic primes greater than or equal to n
-9. Exit
+9. Find the number of permutations of 1 to n so that prime numbers are at prime indices
+10. Exit
 
 ## Memory safety
 
