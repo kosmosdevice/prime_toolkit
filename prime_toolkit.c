@@ -34,6 +34,29 @@ bool test_prime(int n) {
     return true;
 }
 
+int prime_counter(int n) {
+    bool *prime = calloc((n + 1), sizeof(bool));
+    memset(prime, true, (n + 1) * sizeof(bool));
+    prime[0] = false;
+    prime[1] = false;
+    prime[2] = true;
+
+    for (int p = 3; p * p <= n; p += 2) {
+        if (prime[p] == true) {
+            for (int i = p * p; i <= n; i += 2 * p) {
+                prime[i] = false;
+            }
+        }
+    }
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+        if (prime[i])
+            result++;
+    }
+    free(prime);
+    return result;
+}
+
 int_list primes_up_to(int n) {
     int_list result = {0};
     bool *prime = malloc(n + 1 * sizeof(bool));
@@ -231,10 +254,11 @@ int main(int argc, char **argv) {
     printf("8. Find all palindromic primes greater than or equal to n\n");
     printf("9. Find the number of permutations of 1 to n so that prime numbers "
            "are at prime indices\n");
-    printf("10. Exit\n");
+    printf("10. Count all the primes up to n\n");
+    printf("11. Exit\n");
 
     while (1) {
-        printf("\nEnter your choice (1-10): ");
+        printf("\nEnter your choice (1-11): ");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -351,7 +375,15 @@ int main(int argc, char **argv) {
             printf("\n");
             break;
         }
-        case 10:
+        case 10: {
+            printf("Enter a number: ");
+            scanf("%d", &n);
+            int result = prime_counter(n);
+            printf("The number of primes up to %d is %d\n", n, result);
+            printf("\n");
+            break;
+        }
+        case 11:
             return 0;
         default:
             printf("Invalid choice\n");
