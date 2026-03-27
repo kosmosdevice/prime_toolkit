@@ -19,6 +19,7 @@ finding primes, factorization, gap analysis, and merit calculations.
     or equal to a given limit
     - Prime Permutations: Find the number of permutations of 1 to n so that 
     prime numbers are at prime indices
+    - Prime Counter: Count the number of primes up to n
 
 ## Building
 
@@ -44,7 +45,8 @@ Then select from the menu:
 7. Find all primes up to n with sieve of Atkin
 8. Find all palindromic primes greater than or equal to n
 9. Find the number of permutations of 1 to n so that prime numbers are at prime indices
-10. Exit
+10. Count all the primes up to n
+11. Exit
 
 ## Memory safety
 
